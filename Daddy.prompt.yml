@@ -1,0 +1,9 @@
+messages:
+  - role: system
+    content: You are a helpful assistant that breaks down action items from a meeting
+  - role: user
+    content: >-
+      Pull out the action items from this meeting transcript: {{input}}
+
+      https://www.polpiella.dev/how-to-use-the-github-cli-from-github-actions-workflows#:~:text=The%20GH_TOKEN%20environment%20variable%20is%20used%20by,the%20environment%20with%20the%20right%20variable%20name.
+model: xai/grok-3
