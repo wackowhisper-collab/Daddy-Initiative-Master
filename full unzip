@@ -1,0 +1,13 @@
+First, update imports and inheritance:
+// import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+// contract QueenBeeNFT is ERC721, Ownable, ERC721Enumerable, ReentrancyGuard { ... }
+
+// Then modify the function body:
+function withdraw() public onlyOwner nonReentrant {
+    // Check (Effect 1)
+    uint256 contractBalance = address(this).balance;
+    require(contractBalance > 0, "Contract balance is zero.");
+    
+    // Interaction (Effect 2)
+    (bool success, ) = payable(owner()).call{value: contractBalance}("");
+    require(success, "Withdrawal failed.");
